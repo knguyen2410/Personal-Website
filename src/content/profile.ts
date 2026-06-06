@@ -34,14 +34,16 @@ export type SkillGroup = {
   skills: string[];
 };
 
+const assetPath = (fileName: string) => `${import.meta.env.BASE_URL}${fileName}`;
+
 export const profile = {
   name: "Khoa Nguyen",
   role: "Research Engineer",
   location: "United States",
   email: "nkhoa2410@gmail.com",
   githubUrl: "https://github.com/knguyen2410",
-  resumePath: "/resume.pdf",
-  heroImage: "/research-workspace.png",
+  resumePath: assetPath("resume.pdf"),
+  heroImage: assetPath("research-workspace.png"),
   headline:
     "I build machine learning experiments, evaluation pipelines, and applied AI systems with a bias toward reproducibility.",
   summary: [
@@ -62,7 +64,7 @@ export const profile = {
     },
     {
       label: "Resume",
-      href: "/resume.pdf",
+      href: assetPath("resume.pdf"),
       icon: "resume",
     },
   ] satisfies ProfileLink[],

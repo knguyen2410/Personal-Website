@@ -28,4 +28,4 @@ npm run preview
 
 ## GitHub Pages
 
-This repo is intended to be published as `knguyen2410.github.io`. The included workflow deploys the built `dist` directory through GitHub Pages when changes land on `main`.
+This repo is intended to be published with GitHub Pages at `https://knguyen2410.github.io/Personal-Website/`. The included workflow deploys the built `dist` directory through GitHub Pages when changes land on `main`.
