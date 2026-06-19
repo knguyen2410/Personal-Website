@@ -1,7 +1,7 @@
 export type ProfileLink = {
   label: string;
   href: string;
-  icon: "github" | "mail" | "resume" | "external";
+  icon: "github" | "linkedin" | "mail" | "phone" | "resume" | "external";
   external?: boolean;
 };
 
@@ -34,21 +34,28 @@ export type SkillGroup = {
   skills: string[];
 };
 
+export type Achievement = {
+  title: string;
+  detail: string;
+};
+
 const assetPath = (fileName: string) => `${import.meta.env.BASE_URL}${fileName}`;
 
 export const profile = {
   name: "Khoa Nguyen",
-  role: "Research Engineer",
-  location: "United States",
-  email: "nkhoa2410@gmail.com",
+  role: "Ph.D. Researcher and Research Scientist",
+  location: "Newark, New Jersey",
+  email: "nk569@njit.edu",
+  phone: "(973) 978-6177",
   githubUrl: "https://github.com/knguyen2410",
+  linkedinUrl: "https://www.linkedin.com/in/khoanguyen2410",
   resumePath: assetPath("resume.pdf"),
   heroImage: assetPath("research-workspace.png"),
   headline:
-    "I build machine learning experiments, evaluation pipelines, and applied AI systems with a bias toward reproducibility.",
+    "I build reliable, privacy-preserving LLM and agentic systems for security-critical software and data-sensitive settings.",
   summary: [
-    "My work sits between research questions and usable systems: turning papers, benchmarks, and model behavior into things that can be tested, compared, and improved.",
-    "This homepage is a compact profile for research engineering roles, with projects and technical work as the main evidence.",
+    "I am a Ph.D. student in Data Science at the New Jersey Institute of Technology, advised by Dr. NhatHai Phan, and a Research Scientist at OppyAI.",
+    "My research connects LLM systems, tool-augmented agents, distributed learning, and differential privacy, with a focus on systems that can reason over complex data while operating safely under realistic adversarial pressure.",
   ],
   links: [
     {
@@ -58,8 +65,14 @@ export const profile = {
       external: true,
     },
     {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/khoanguyen2410",
+      icon: "linkedin",
+      external: true,
+    },
+    {
       label: "Email",
-      href: "mailto:nkhoa2410@gmail.com",
+      href: "mailto:nk569@njit.edu",
       icon: "mail",
     },
     {
@@ -68,122 +81,154 @@ export const profile = {
       icon: "resume",
     },
   ] satisfies ProfileLink[],
-  signals: ["ML experiments", "Evaluation", "Reproducibility", "Applied AI"],
+  signals: ["Privacy-preserving LLMs", "Agentic systems", "Federated learning", "Software testing"],
   projects: [
     {
-      title: "Representation Learning Toolkit",
-      focus: "Model behavior",
+      title: "NOIR: Privacy-Preserving Generation with LLMs",
+      focus: "LLM privacy",
       summary:
-        "A research sandbox for comparing embedding models across retrieval, clustering, and downstream transfer tasks.",
+        "A split-learning LLM framework for protecting sensitive prompts, latent states, and multi-step outputs during generation.",
       approach:
-        "Designed shared loaders, metric runners, and report outputs so experiments can be repeated with minimal setup.",
+        "Developed local differential privacy mechanisms, analyzed reconstruction risk through theoretical recovery bounds, and extended the system toward multimodal and tool-use settings.",
       impact:
-        "Replace this with the clearest result: accuracy lift, runtime reduction, benchmark win, or research insight.",
-      stack: ["Python", "PyTorch", "NumPy", "scikit-learn"],
-      links: [
-        {
-          label: "Repository",
-          href: "https://github.com/knguyen2410",
-          icon: "github",
-          external: true,
-        },
-      ],
+        "Accepted to USENIX Security 2026 and connected to an international patent application on private code generation.",
+      stack: ["PyTorch", "Hugging Face", "Differential privacy", "Split learning"],
+      links: [],
     },
     {
-      title: "Experiment Tracking Pipeline",
-      focus: "Reproducibility",
+      title: "Program Structure-Aware LLM for Targeted Software Testing",
+      focus: "Software agents",
       summary:
-        "A compact workflow for logging runs, comparing metrics, and preserving configuration for ML experiments.",
+        "A program-aware agentic framework for generating targeted tests aligned with specific software behaviors.",
       approach:
-        "Structured each run around versioned configs, deterministic seeds, artifact capture, and small report summaries.",
+        "Conditioned language-model agents on program representations so generated tests target behavior beyond textual semantics.",
       impact:
-        "Replace this with the outcome that matters most: fewer reruns, faster comparison, or cleaner handoff.",
-      stack: ["TypeScript", "Python", "SQLite", "GitHub Actions"],
-      links: [
-        {
-          label: "Repository",
-          href: "https://github.com/knguyen2410",
-          icon: "github",
-          external: true,
-        },
-      ],
+        "Accepted to Findings of ACL 2026, with stronger precision and effectiveness than baseline methods.",
+      stack: ["LLM agents", "Program analysis", "Python", "Software testing"],
+      links: [],
     },
     {
-      title: "Robust Vision Benchmark",
-      focus: "Evaluation",
+      title: "FedChip: Federated LLM for AI Accelerator Chip Design",
+      focus: "Federated LLMs",
       summary:
-        "A benchmark harness for stress-testing vision models against distribution shifts and noisy labels.",
+        "A federated framework for collaborative LLM-based hardware design without centralizing sensitive design data.",
       approach:
-        "Built evaluation splits, augmentation sweeps, and compact plots to expose where models fail consistently.",
+        "Built a multi-objective evaluation pipeline for accelerator design quality across distributed participants.",
       impact:
-        "Replace this with the strongest signal: failure mode discovered, benchmark coverage, or model improvement.",
-      stack: ["PyTorch", "OpenCV", "Pandas", "Matplotlib"],
-      links: [
-        {
-          label: "Repository",
-          href: "https://github.com/knguyen2410",
-          icon: "github",
-          external: true,
-        },
-      ],
+        "Published at IEEE ICLAD 2025, demonstrating practical gains over prior LLM-aided hardware design methods.",
+      stack: ["Federated learning", "LLMs", "Hardware design", "Evaluation"],
+      links: [],
+    },
+    {
+      title: "Geographic-Aware Federated Learning",
+      focus: "Distributed learning",
+      summary:
+        "A federated learning approach that models structured relationships among decentralized participants under realistic heterogeneity.",
+      approach:
+        "Developed stochastic geographic gradient fusion to incorporate real-world relational structure across clients.",
+      impact:
+        "Published at IEEE BigData 2025 and validated on large-scale distributed datasets.",
+      stack: ["Federated learning", "Optimization", "Distributed data", "Python"],
+      links: [],
     },
   ] satisfies Project[],
   research: [
     {
-      title: "Paper Reproduction Notes",
+      title: "NOIR: Privacy-Preserving Generation of Code with Open-Source LLMs",
       description:
-        "Short technical notes that translate papers into runnable experiments, implementation caveats, and observed gaps.",
-      tags: ["reproduction", "benchmarks", "implementation"],
+        "Khoa Nguyen, Khiem Ton, NhatHai Phan, Issa Khalil, Khang Tran, Cristian Borcea, Ruoming Jin, Abdallah Khreishah, My T. Thai.",
+      tags: ["USENIX Security 2026", "LLM privacy", "Code generation"],
     },
     {
-      title: "Model Evaluation Memos",
+      title: "Program Structure-aware Language Models",
       description:
-        "Compact analyses of model behavior, metric selection, and failure cases across applied AI workflows.",
-      tags: ["evaluation", "error analysis", "metrics"],
+        "Khang Tran, Khoa Nguyen, Cristian Borcea, NhatHai Phan. Targeted software testing beyond textual semantics.",
+      tags: ["Findings of ACL 2026", "Software testing", "LLM agents"],
     },
     {
-      title: "Applied Systems Experiments",
+      title: "SGFusion: Stochastic Geographic Gradient Fusion in Federated Learning",
       description:
-        "Prototype systems that connect research ideas to usable tools, with attention to data flow and testability.",
-      tags: ["systems", "pipelines", "interfaces"],
+        "Khoa Nguyen, Khang Tran, NhatHai Phan, Cristian Borcea, Ruoming Jin, Issa Khalil.",
+      tags: ["IEEE BigData 2025", "Federated learning", "Distributed optimization"],
+    },
+    {
+      title: "FedChip: Federated LLM for AI Accelerator Chip Design",
+      description:
+        "Mahmoud Nazzal, Khoa Nguyen, Deepak Vungarala, Ramtin Zand, Shaahin Angizi, Hai Phan, Abdallah Khreishah.",
+      tags: ["IEEE ICLAD 2025", "Federated LLMs", "Chip design"],
+    },
+    {
+      title: "System and Method for Private Generation of Code",
+      description:
+        "International patent application with NhatHai Phan, Khiem Ton, Issa Khalil, My Thai, and Ruoming Jin.",
+      tags: ["Patent", "PCT/US25/042391", "Private code generation"],
     },
   ] satisfies ResearchItem[],
   timeline: [
     {
-      label: "Experience",
-      title: "Research Engineering Projects",
-      organization: "Independent and academic work",
+      label: "Nov 2024 - Present",
+      title: "Research Scientist",
+      organization: "OppyAI Inc. - Newark, NJ",
       detail:
-        "Built and evaluated ML prototypes, reproducible experiment workflows, and technical writeups for applied research questions.",
+        "Helped launch OppyAI from research on privacy-preserving AI, designed core LLM privacy techniques, and built multi-node, multi-GPU data processing, training, and evaluation pipelines.",
     },
     {
-      label: "Education",
-      title: "Computer Science and Machine Learning",
-      organization: "Add university or program",
+      label: "Nov 2025 - Present",
+      title: "Research Collaborator",
+      organization: "AT&T - Bedminster, NJ",
       detail:
-        "Add degree, coursework, research lab, thesis, or relevant academic focus before broad application use.",
+        "Working on machine-learning approaches for cellular network maintenance scheduling.",
+    },
+    {
+      label: "Sep 2023 - Present",
+      title: "Ph.D. in Data Science",
+      organization: "New Jersey Institute of Technology",
+      detail: "Advised by Dr. NhatHai Phan, with research on privacy-preserving LLMs, agent systems, and federated learning.",
+    },
+    {
+      label: "Sep 2019 - May 2023",
+      title: "B.S. in Computer Science",
+      organization: "New Jersey Institute of Technology",
+      detail: "Undergraduate training in computer science, programming systems, and data science foundations.",
     },
   ] satisfies TimelineItem[],
   skillGroups: [
     {
-      title: "ML / AI",
-      skills: ["PyTorch", "Transformers", "Evaluation", "Representation learning"],
+      title: "Frameworks",
+      skills: ["PyTorch", "Hugging Face", "LLaMA-Factory", "VERL", "DeepSpeed", "Ray"],
     },
     {
-      title: "Research",
-      skills: ["Paper reproduction", "Ablations", "Benchmarking", "Error analysis"],
+      title: "Research Areas",
+      skills: ["LLM systems", "Agentic AI", "Differential privacy", "Federated learning", "Software testing"],
     },
     {
-      title: "Engineering",
-      skills: ["TypeScript", "Python", "React", "APIs"],
+      title: "Infrastructure",
+      skills: ["CUDA", "Linux", "Git", "Docker", "SQL", "Multi-GPU training"],
     },
     {
-      title: "Data",
-      skills: ["Pandas", "SQL", "Data pipelines", "Visualization"],
-    },
-    {
-      title: "Tools",
-      skills: ["Git", "GitHub Actions", "Linux", "Docker"],
+      title: "Languages",
+      skills: ["Python", "Bash", "Java", "C++", "C"],
     },
   ] satisfies SkillGroup[],
+  achievements: [
+    {
+      title: "Teaching Assistant at NJIT",
+      detail: "Supported DS110, CS280, DS677, and DS636 across AI foundations, programming languages, deep learning, and analytics.",
+    },
+    {
+      title: "Winner - GfK NextGen Data Science Hackathon 2022",
+      detail: "Awarded first place in a data science competition focused on applied analytics.",
+    },
+    {
+      title: "ICPC Greater NY Regional Qualifier 2022",
+      detail: "Qualified for the regional contest through competitive programming performance.",
+    },
+    {
+      title: "3rd Prize - Vietnam Science and Engineering Fair 2017",
+      detail: "Recognized for early research and engineering work.",
+    },
+  ] satisfies Achievement[],
+  contactHeading: "Open to research engineering, LLM systems, and privacy-preserving AI roles.",
+  contactText:
+    "I am especially interested in teams building reliable agentic systems, secure ML infrastructure, and privacy-preserving AI that can move from research prototypes into deployed products.",
 };

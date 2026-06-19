@@ -8,9 +8,9 @@ Most public-facing content lives in `src/content/profile.ts`.
 
 Before sharing the site broadly:
 
-- Replace the placeholder project, research, experience, education, and skill entries.
-- Add the real resume PDF at `public/resume.pdf`.
-- Update profile links for LinkedIn or any additional profiles.
+- Keep project, research, experience, education, and skill entries current in `src/content/profile.ts`.
+- Replace `public/resume.pdf` when the CV changes.
+- Update profile links for GitHub, LinkedIn, or any additional profiles.
 
 ## Local Development
 

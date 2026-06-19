@@ -1,5 +1,6 @@
 import {
   ArrowUpRight,
+  Award,
   BookOpen,
   BriefcaseBusiness,
   Download,
@@ -7,14 +8,18 @@ import {
   FileText,
   Github,
   GraduationCap,
+  Linkedin,
   Mail,
   MapPin,
+  Phone,
 } from "lucide-react";
 import { profile, type ProfileLink, type Project } from "./content/profile";
 
 const iconForLink = {
   github: Github,
+  linkedin: Linkedin,
   mail: Mail,
+  phone: Phone,
   resume: Download,
   external: ExternalLink,
 };
@@ -91,7 +96,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 function App() {
-  const primaryLinks = profile.links.slice(0, 2);
+  const primaryLinks = profile.links.slice(0, 3);
   const resumeLink = profile.links.find((link) => link.icon === "resume");
 
   return (
@@ -140,7 +145,7 @@ function App() {
         </section>
 
         <section className="section" id="projects">
-          <SectionHeading eyebrow="Selected work" title="Projects that show the research loop" />
+          <SectionHeading eyebrow="Selected work" title="Research projects with deployable systems underneath" />
           <div className="project-grid">
             {profile.projects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
@@ -149,7 +154,7 @@ function App() {
         </section>
 
         <section className="section section-band" id="research">
-          <SectionHeading eyebrow="Technical work" title="Research habits I want visible" />
+          <SectionHeading eyebrow="Publications" title="Peer-reviewed work, patent activity, and research outputs" />
           <div className="research-list">
             {profile.research.map((item) => (
               <article className="research-item" key={item.title}>
@@ -173,7 +178,8 @@ function App() {
             <SectionHeading eyebrow="Background" title="Experience and education" />
             <div className="timeline">
               {profile.timeline.map((item) => {
-                const Icon = item.label === "Education" ? GraduationCap : BriefcaseBusiness;
+                const isEducation = item.title.includes("Ph.D.") || item.title.includes("B.S.");
+                const Icon = isEducation ? GraduationCap : BriefcaseBusiness;
 
                 return (
                   <article className="timeline-item" key={`${item.label}-${item.title}`}>
@@ -191,7 +197,7 @@ function App() {
           </div>
 
           <div>
-            <SectionHeading eyebrow="Stack" title="Skills grouped for scanning" />
+            <SectionHeading eyebrow="Stack" title="Systems, research, and infrastructure skills" />
             <div className="skill-grid">
               {profile.skillGroups.map((group) => (
                 <article className="skill-group" key={group.title}>
@@ -205,26 +211,45 @@ function App() {
                 </article>
               ))}
             </div>
+            <div className="achievement-panel">
+              <div className="achievement-heading">
+                <Award aria-hidden="true" size={22} />
+                <h3>Service and recognition</h3>
+              </div>
+              <div className="achievement-list">
+                {profile.achievements.map((achievement) => (
+                  <article key={achievement.title}>
+                    <h4>{achievement.title}</h4>
+                    <p>{achievement.detail}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
         <section className="contact-section" id="contact">
           <div>
             <p className="eyebrow">Contact</p>
-            <h2>Open to research engineering roles.</h2>
-            <p>
-              I am especially interested in teams that care about strong evaluation, clean experiment design,
-              and research work that can survive contact with real users.
-            </p>
+            <h2>{profile.contactHeading}</h2>
+            <p>{profile.contactText}</p>
           </div>
           <div className="contact-actions">
             <a href={`mailto:${profile.email}`}>
               <Mail aria-hidden="true" size={18} />
               {profile.email}
             </a>
+            <a href={`tel:${profile.phone.replace(/[^+\d]/g, "")}`}>
+              <Phone aria-hidden="true" size={18} />
+              {profile.phone}
+            </a>
             <a href={profile.githubUrl} target="_blank" rel="noreferrer">
               <Github aria-hidden="true" size={18} />
               GitHub
+            </a>
+            <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
+              <Linkedin aria-hidden="true" size={18} />
+              LinkedIn
             </a>
             <a href={profile.resumePath}>
               <Download aria-hidden="true" size={18} />

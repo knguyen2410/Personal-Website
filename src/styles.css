@@ -247,14 +247,15 @@ h1 {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
 .project-card,
 .research-item,
 .timeline-item,
-.skill-group {
+.skill-group,
+.achievement-panel {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--paper-strong);
@@ -293,6 +294,12 @@ h1 {
     linear-gradient(45deg, transparent 0 47%, rgba(255, 253, 248, 0.28) 47% 49%, transparent 49% 100%);
 }
 
+.project-card:nth-child(4) .project-visual {
+  background:
+    linear-gradient(135deg, rgba(88, 120, 91, 0.96), rgba(29, 36, 36, 0.9)),
+    linear-gradient(45deg, transparent 0 47%, rgba(255, 253, 248, 0.28) 47% 49%, transparent 49% 100%);
+}
+
 .project-visual span {
   font-size: 0.9rem;
   font-weight: 900;
@@ -315,7 +322,8 @@ h1 {
 .project-card h3,
 .research-item h3,
 .timeline-item h3,
-.skill-group h3 {
+.skill-group h3,
+.achievement-panel h3 {
   margin: 5px 0 8px;
   font-size: 1.18rem;
   line-height: 1.2;
@@ -324,6 +332,7 @@ h1 {
 .project-card p,
 .research-item p,
 .timeline-item p,
+.achievement-list p,
 .contact-section p {
   color: var(--muted);
   line-height: 1.62;
@@ -393,7 +402,8 @@ h1 {
 
 .research-item svg,
 .timeline-item svg,
-.skill-group svg {
+.skill-group svg,
+.achievement-panel svg {
   color: var(--amber);
   flex: 0 0 auto;
 }
@@ -462,6 +472,43 @@ h1 {
   color: var(--muted);
   font-size: 0.9rem;
   font-weight: 760;
+}
+
+.achievement-panel {
+  margin-top: 14px;
+  padding: 20px;
+}
+
+.achievement-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.achievement-heading h3 {
+  margin: 0;
+}
+
+.achievement-list {
+  display: grid;
+  gap: 14px;
+}
+
+.achievement-list article {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.achievement-list h4 {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.achievement-list p {
+  margin: 0;
 }
 
 .contact-section {
