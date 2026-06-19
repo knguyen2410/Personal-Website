@@ -39,6 +39,11 @@ export type Achievement = {
   detail: string;
 };
 
+export type NewsItem = {
+  date: string;
+  text: string;
+};
+
 const assetPath = (fileName: string) => `${import.meta.env.BASE_URL}${fileName}`;
 
 export const profile = {
@@ -50,6 +55,7 @@ export const profile = {
   githubUrl: "https://github.com/knguyen2410",
   linkedinUrl: "https://www.linkedin.com/in/khoanguyen2410",
   resumePath: assetPath("resume.pdf"),
+  profileImage: assetPath("profile.jpeg"),
   heroImage: assetPath("research-workspace.png"),
   headline:
     "I build reliable, privacy-preserving LLM and agentic systems for security-critical software and data-sensitive settings.",
@@ -82,6 +88,28 @@ export const profile = {
     },
   ] satisfies ProfileLink[],
   signals: ["Privacy-preserving LLMs", "Agentic systems", "Federated learning", "Software testing"],
+  news: [
+    {
+      date: "2026",
+      text: "NOIR accepted to USENIX Security 2026.",
+    },
+    {
+      date: "2026",
+      text: "Program Structure-aware Language Models accepted to Findings of ACL 2026.",
+    },
+    {
+      date: "Nov 2025",
+      text: "Started a research collaboration with AT&T on machine-learning approaches for cellular network maintenance scheduling.",
+    },
+    {
+      date: "2025",
+      text: "FedChip published at IEEE ICLAD 2025 and SGFusion published at IEEE BigData 2025.",
+    },
+    {
+      date: "Nov 2024",
+      text: "Joined OppyAI Inc. as a Research Scientist, working on privacy-preserving AI systems and distributed training pipelines.",
+    },
+  ] satisfies NewsItem[],
   projects: [
     {
       title: "NOIR: Privacy-Preserving Generation with LLMs",

@@ -1,5 +1,4 @@
 import {
-  ArrowUpRight,
   Award,
   BookOpen,
   BriefcaseBusiness,
@@ -13,6 +12,7 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { profile, type ProfileLink, type Project } from "./content/profile";
 
 const iconForLink = {
@@ -24,243 +24,207 @@ const iconForLink = {
   external: ExternalLink,
 };
 
-function LinkButton({ link, variant = "secondary" }: { link: ProfileLink; variant?: "primary" | "secondary" }) {
+function ProfileLinkItem({ link }: { link: ProfileLink }) {
   const Icon = iconForLink[link.icon];
 
   return (
-    <a
-      className={`link-button ${variant}`}
-      href={link.href}
-      target={link.external ? "_blank" : undefined}
-      rel={link.external ? "noreferrer" : undefined}
-    >
-      <Icon aria-hidden="true" size={18} />
+    <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noreferrer" : undefined}>
+      <Icon aria-hidden="true" size={17} />
       <span>{link.label}</span>
     </a>
   );
 }
 
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
-    <div className="section-heading">
-      <span>{eyebrow}</span>
+    <section className="content-section" id={id}>
       <h2>{title}</h2>
-    </div>
+      {children}
+    </section>
   );
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectItem({ project }: { project: Project }) {
   return (
-    <article className="project-card">
-      <div className="project-visual" aria-hidden="true">
-        <span>0{index + 1}</span>
-        <strong>{project.focus}</strong>
-      </div>
-      <div className="project-body">
-        <div>
-          <p className="project-focus">{project.focus}</p>
-          <h3>{project.title}</h3>
-          <p>{project.summary}</p>
-        </div>
-        <dl className="project-details">
-          <div>
-            <dt>Approach</dt>
-            <dd>{project.approach}</dd>
-          </div>
-          <div>
-            <dt>Signal</dt>
-            <dd>{project.impact}</dd>
-          </div>
-        </dl>
-        <div className="project-stack" aria-label={`${project.title} technology stack`}>
-          {project.stack.map((item) => (
-            <span key={item}>{item}</span>
-          ))}
-        </div>
-        <div className="project-links">
-          {project.links.map((link) => (
-            <a
-              key={`${project.title}-${link.label}`}
-              href={link.href}
-              target={link.external ? "_blank" : undefined}
-              rel={link.external ? "noreferrer" : undefined}
-            >
-              {link.label}
-              <ArrowUpRight aria-hidden="true" size={16} />
-            </a>
-          ))}
-        </div>
+    <article className="project-item">
+      <h3>{project.title}</h3>
+      <p>{project.summary}</p>
+      <p>{project.impact}</p>
+      <div className="tag-row" aria-label={`${project.title} technology stack`}>
+        {project.stack.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
       </div>
     </article>
   );
 }
 
 function App() {
-  const primaryLinks = profile.links.slice(0, 3);
   const resumeLink = profile.links.find((link) => link.icon === "resume");
 
   return (
     <>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label={`${profile.name} homepage`}>
-          <span>K</span>
+        <a className="site-title" href="#top" aria-label={`${profile.name} homepage`}>
           {profile.name}
         </a>
         <nav aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#news">News</a>
+          <a href="#publications">Publications</a>
           <a href="#projects">Projects</a>
-          <a href="#research">Research</a>
-          <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
+          {resumeLink ? <a href={resumeLink.href}>CV</a> : null}
         </nav>
       </header>
 
-      <main id="top">
-        <section
-          className="hero"
-          style={{
-            backgroundImage: `linear-gradient(90deg, rgba(247, 246, 241, 0.95) 0%, rgba(247, 246, 241, 0.84) 42%, rgba(247, 246, 241, 0.18) 100%), url(${profile.heroImage})`,
-          }}
-        >
-          <div className="hero-inner">
-            <p className="eyebrow">{profile.role}</p>
-            <h1>{profile.name}</h1>
-            <p className="hero-headline">{profile.headline}</p>
-            <div className="hero-summary">
-              {profile.summary.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-            <div className="hero-actions">
-              {resumeLink ? <LinkButton link={resumeLink} variant="primary" /> : null}
-              {primaryLinks.map((link) => (
-                <LinkButton key={link.label} link={link} />
-              ))}
-            </div>
-            <div className="signal-row" aria-label="Profile focus areas">
+      <main className="page-shell" id="top">
+        <aside className="profile-sidebar" aria-label="Profile summary">
+          <img className="profile-photo" src={profile.profileImage} alt={`${profile.name} portrait`} />
+          <h1>{profile.name}</h1>
+          <p className="profile-role">{profile.role}</p>
+          <ul className="profile-meta">
+            <li>
+              <MapPin aria-hidden="true" size={17} />
+              <span>{profile.location}</span>
+            </li>
+            <li>
+              <Mail aria-hidden="true" size={17} />
+              <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            </li>
+          </ul>
+          <div className="profile-links">
+            {profile.links.map((link) => (
+              <ProfileLinkItem key={link.label} link={link} />
+            ))}
+          </div>
+        </aside>
+
+        <div className="content-column">
+          <Section id="about" title="About me">
+            <p>{profile.summary[0]}</p>
+            <p>{profile.summary[1]}</p>
+            <p>{profile.headline}</p>
+            <div className="interest-row" aria-label="Research interests">
               {profile.signals.map((signal) => (
                 <span key={signal}>{signal}</span>
               ))}
             </div>
-          </div>
-        </section>
+          </Section>
 
-        <section className="section" id="projects">
-          <SectionHeading eyebrow="Selected work" title="Research projects with deployable systems underneath" />
-          <div className="project-grid">
-            {profile.projects.map((project, index) => (
-              <ProjectCard key={project.title} project={project} index={index} />
-            ))}
-          </div>
-        </section>
+          <Section id="news" title="Recent News">
+            <ol className="news-list">
+              {profile.news.map((item) => (
+                <li key={`${item.date}-${item.text}`}>
+                  <time>{item.date}</time>
+                  <span>{item.text}</span>
+                </li>
+              ))}
+            </ol>
+          </Section>
 
-        <section className="section section-band" id="research">
-          <SectionHeading eyebrow="Publications" title="Peer-reviewed work, patent activity, and research outputs" />
-          <div className="research-list">
-            {profile.research.map((item) => (
-              <article className="research-item" key={item.title}>
-                <BookOpen aria-hidden="true" size={22} />
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                  <div className="tag-row">
-                    {item.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
+          <Section id="publications" title="Publications">
+            <div className="publication-list">
+              {profile.research.map((item) => (
+                <article className="publication-item" key={item.title}>
+                  <BookOpen aria-hidden="true" size={19} />
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <div className="tag-row">
+                      {item.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+                </article>
+              ))}
+            </div>
+          </Section>
 
-        <section className="section split-section" id="experience">
-          <div>
-            <SectionHeading eyebrow="Background" title="Experience and education" />
-            <div className="timeline">
+          <Section id="projects" title="Selected Projects">
+            <div className="project-list">
+              {profile.projects.map((project) => (
+                <ProjectItem key={project.title} project={project} />
+              ))}
+            </div>
+          </Section>
+
+          <Section id="experience" title="Experience and Education">
+            <div className="timeline-list">
               {profile.timeline.map((item) => {
                 const isEducation = item.title.includes("Ph.D.") || item.title.includes("B.S.");
                 const Icon = isEducation ? GraduationCap : BriefcaseBusiness;
 
                 return (
                   <article className="timeline-item" key={`${item.label}-${item.title}`}>
-                    <Icon aria-hidden="true" size={22} />
+                    <Icon aria-hidden="true" size={19} />
                     <div>
-                      <p>{item.label}</p>
+                      <p className="item-date">{item.label}</p>
                       <h3>{item.title}</h3>
-                      <span>{item.organization}</span>
+                      <p className="item-place">{item.organization}</p>
                       <p>{item.detail}</p>
                     </div>
                   </article>
                 );
               })}
             </div>
-          </div>
+          </Section>
 
-          <div>
-            <SectionHeading eyebrow="Stack" title="Systems, research, and infrastructure skills" />
-            <div className="skill-grid">
+          <Section id="skills" title="Skills">
+            <div className="skill-list">
               {profile.skillGroups.map((group) => (
-                <article className="skill-group" key={group.title}>
-                  <FileText aria-hidden="true" size={20} />
-                  <h3>{group.title}</h3>
-                  <ul>
-                    {group.skills.map((skill) => (
-                      <li key={skill}>{skill}</li>
-                    ))}
-                  </ul>
+                <article key={group.title}>
+                  <FileText aria-hidden="true" size={18} />
+                  <div>
+                    <h3>{group.title}</h3>
+                    <p>{group.skills.join(", ")}</p>
+                  </div>
                 </article>
               ))}
             </div>
-            <div className="achievement-panel">
-              <div className="achievement-heading">
-                <Award aria-hidden="true" size={22} />
-                <h3>Service and recognition</h3>
-              </div>
-              <div className="achievement-list">
-                {profile.achievements.map((achievement) => (
-                  <article key={achievement.title}>
-                    <h4>{achievement.title}</h4>
-                    <p>{achievement.detail}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+          </Section>
 
-        <section className="contact-section" id="contact">
-          <div>
-            <p className="eyebrow">Contact</p>
-            <h2>{profile.contactHeading}</h2>
+          <Section id="service" title="Service and Recognition">
+            <div className="achievement-list">
+              {profile.achievements.map((achievement) => (
+                <article key={achievement.title}>
+                  <Award aria-hidden="true" size={18} />
+                  <div>
+                    <h3>{achievement.title}</h3>
+                    <p>{achievement.detail}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </Section>
+
+          <Section id="contact" title="Contact">
             <p>{profile.contactText}</p>
-          </div>
-          <div className="contact-actions">
-            <a href={`mailto:${profile.email}`}>
-              <Mail aria-hidden="true" size={18} />
-              {profile.email}
-            </a>
-            <a href={`tel:${profile.phone.replace(/[^+\d]/g, "")}`}>
-              <Phone aria-hidden="true" size={18} />
-              {profile.phone}
-            </a>
-            <a href={profile.githubUrl} target="_blank" rel="noreferrer">
-              <Github aria-hidden="true" size={18} />
-              GitHub
-            </a>
-            <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
-              <Linkedin aria-hidden="true" size={18} />
-              LinkedIn
-            </a>
-            <a href={profile.resumePath}>
-              <Download aria-hidden="true" size={18} />
-              Resume
-            </a>
-          </div>
-          <p className="location">
-            <MapPin aria-hidden="true" size={16} />
-            {profile.location}
-          </p>
-        </section>
+            <ul className="contact-list">
+              <li>
+                <Mail aria-hidden="true" size={18} />
+                <a href={`mailto:${profile.email}`}>{profile.email}</a>
+              </li>
+              <li>
+                <Phone aria-hidden="true" size={18} />
+                <a href={`tel:${profile.phone.replace(/[^+\d]/g, "")}`}>{profile.phone}</a>
+              </li>
+              <li>
+                <Github aria-hidden="true" size={18} />
+                <a href={profile.githubUrl} target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <Linkedin aria-hidden="true" size={18} />
+                <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </Section>
+        </div>
       </main>
     </>
   );
