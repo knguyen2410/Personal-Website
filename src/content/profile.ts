@@ -61,7 +61,7 @@ export const profile = {
     "I build reliable, privacy-preserving LLM and agentic systems for security-critical software and data-sensitive settings.",
   summary: [
     "I am a Ph.D. student in Data Science at the New Jersey Institute of Technology, advised by Dr. NhatHai Phan, and a Research Scientist at OppyAI.",
-    "My research connects LLM systems, tool-augmented agents, distributed learning, and differential privacy, with a focus on systems that can reason over complex data while operating safely under realistic adversarial pressure.",
+    "My research connects LLMs, VLMs, post-training, tool-augmented agents, distributed learning, and differential privacy, with a focus on systems that can reason over complex data while operating safely in data-sensitive settings.",
   ],
   links: [
     {
@@ -87,15 +87,15 @@ export const profile = {
       icon: "resume",
     },
   ] satisfies ProfileLink[],
-  signals: ["Privacy-preserving LLMs", "Agentic systems", "Federated learning", "Software testing"],
+  signals: ["Privacy-preserving LLMs", "VLMs and post-training", "Agentic systems", "Software security"],
   news: [
     {
       date: "2026",
-      text: "NOIR accepted to USENIX Security 2026.",
+      text: "Program Structure-aware Language Models accepted to Findings of ACL 2026.",
     },
     {
       date: "2026",
-      text: "Program Structure-aware Language Models accepted to Findings of ACL 2026.",
+      text: "NOIR accepted to USENIX Security 2026.",
     },
     {
       date: "Nov 2025",
@@ -115,24 +115,24 @@ export const profile = {
       title: "NOIR: Privacy-Preserving Generation with LLMs",
       focus: "LLM privacy",
       summary:
-        "A split-learning LLM framework for protecting sensitive prompts, latent states, and multi-step outputs during generation.",
+        "A privacy-preserving agentic LLM system for protecting sensitive user information while preserving strong model utility in interactive and tool-augmented settings.",
       approach:
-        "Developed local differential privacy mechanisms, analyzed reconstruction risk through theoretical recovery bounds, and extended the system toward multimodal and tool-use settings.",
+        "Developed NOIR, a split-learning LLM framework with local differential privacy, analyzed reconstruction risk through theoretical recovery bounds, and extended the mechanism toward multimodal, tool-use, and agentic systems.",
       impact:
         "Accepted to USENIX Security 2026 and connected to an international patent application on private code generation.",
-      stack: ["PyTorch", "Hugging Face", "Differential privacy", "Split learning"],
+      stack: ["PyTorch", "Transformers", "Differential privacy", "Split learning"],
       links: [],
     },
     {
       title: "Program Structure-Aware LLM for Targeted Software Testing",
       focus: "Software agents",
       summary:
-        "A program-aware agentic framework for generating targeted tests aligned with specific software behaviors.",
+        "A program-aware agentic framework for targeted test-case generation aligned with specific software behaviors.",
       approach:
         "Conditioned language-model agents on program representations so generated tests target behavior beyond textual semantics.",
       impact:
-        "Accepted to Findings of ACL 2026, with stronger precision and effectiveness than baseline methods.",
-      stack: ["LLM agents", "Program analysis", "Python", "Software testing"],
+        "Accepted to Findings of ACL 2026, with higher precision and effectiveness than strong baseline methods.",
+      stack: ["LLM agents", "Program analysis", "Fuzzing", "Software security"],
       links: [],
     },
     {
@@ -162,16 +162,16 @@ export const profile = {
   ] satisfies Project[],
   research: [
     {
-      title: "NOIR: Privacy-Preserving Generation of Code with Open-Source LLMs",
-      description:
-        "Khoa Nguyen, Khiem Ton, NhatHai Phan, Issa Khalil, Khang Tran, Cristian Borcea, Ruoming Jin, Abdallah Khreishah, My T. Thai.",
-      tags: ["USENIX Security 2026", "LLM privacy", "Code generation"],
-    },
-    {
       title: "Program Structure-aware Language Models",
       description:
         "Khang Tran, Khoa Nguyen, Cristian Borcea, NhatHai Phan. Targeted software testing beyond textual semantics.",
       tags: ["Findings of ACL 2026", "Software testing", "LLM agents"],
+    },
+    {
+      title: "NOIR: Privacy-Preserving Generation of Code with Open-Source LLMs",
+      description:
+        "Khoa Nguyen, Khiem Ton, NhatHai Phan, Issa Khalil, Khang Tran, Cristian Borcea, Ruoming Jin, Abdallah Khreishah, My T. Thai.",
+      tags: ["USENIX Security 2026", "LLM privacy", "Code generation"],
     },
     {
       title: "SGFusion: Stochastic Geographic Gradient Fusion in Federated Learning",
@@ -198,20 +198,21 @@ export const profile = {
       title: "Research Scientist",
       organization: "OppyAI Inc. - Newark, NJ",
       detail:
-        "Helped launch OppyAI from research on privacy-preserving AI, designed core LLM privacy techniques, and built multi-node, multi-GPU data processing, training, and evaluation pipelines.",
+        "Translated core privacy-preserving LLM research into a commercial startup and built distributed ML pipelines spanning data preprocessing, pre-training, SFT/RL post-training, inference, and evaluation on multi-node, multi-GPU infrastructure.",
     },
     {
       label: "Nov 2025 - Present",
       title: "Research Collaborator",
       organization: "AT&T - Bedminster, NJ",
       detail:
-        "Working on machine-learning approaches for cellular network maintenance scheduling.",
+        "Designed a graph foundation model for cellular site maintenance scheduling, using large-scale historical LTE and 5G network data to improve operational efficiency and user experience.",
     },
     {
       label: "Sep 2023 - Present",
       title: "Ph.D. in Data Science",
       organization: "New Jersey Institute of Technology",
-      detail: "Advised by Dr. NhatHai Phan, with research on privacy-preserving LLMs, agent systems, and federated learning.",
+      detail:
+        "Advised by Dr. NhatHai Phan, with research on LLMs, VLMs, SFT/RL post-training, tool-augmented agents, security, privacy, and fuzzing.",
     },
     {
       label: "Sep 2019 - May 2023",
@@ -222,20 +223,20 @@ export const profile = {
   ] satisfies TimelineItem[],
   skillGroups: [
     {
-      title: "Frameworks",
-      skills: ["PyTorch", "Hugging Face", "LLaMA-Factory", "VERL", "DeepSpeed", "Ray"],
+      title: "Machine Learning",
+      skills: ["LLMs", "VLMs", "NLP", "RL", "Distributed training", "GNNs", "Federated learning", "Distillation"],
     },
     {
-      title: "Research Areas",
-      skills: ["LLM systems", "Agentic AI", "Differential privacy", "Federated learning", "Software testing"],
+      title: "Frameworks",
+      skills: ["PyTorch", "Transformers", "LLaMA-Factory", "verl", "vLLM", "Ray", "Triton", "DeepSpeed", "Accelerate"],
     },
     {
       title: "Infrastructure",
-      skills: ["CUDA", "Linux", "Git", "Docker", "SQL", "Multi-GPU training"],
+      skills: ["CUDA", "Linux", "Slurm", "Git", "Docker", "SQL", "Multi-GPU training"],
     },
     {
       title: "Languages",
-      skills: ["Python", "Bash", "Java", "C++", "C"],
+      skills: ["Python", "Java", "JavaScript", "C/C++"],
     },
   ] satisfies SkillGroup[],
   achievements: [
