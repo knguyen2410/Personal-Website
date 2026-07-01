@@ -50,7 +50,7 @@ export const profile = {
   name: "Khoa Nguyen",
   role: "Ph.D. Researcher and Research Scientist",
   location: "Newark, New Jersey",
-  email: "nk569@njit.edu",
+  email: "nkhoa2410@gmail.com",
   phone: "(973) 978-6177",
   githubUrl: "https://github.com/knguyen2410",
   linkedinUrl: "https://www.linkedin.com/in/khoanguyen2410",
@@ -61,7 +61,7 @@ export const profile = {
     "I build reliable, privacy-preserving LLM and agentic systems for security-critical software and data-sensitive settings.",
   summary: [
     "I am a Ph.D. student in Data Science at the New Jersey Institute of Technology, advised by Dr. NhatHai Phan, and a Research Scientist at OppyAI.",
-    "My research connects LLMs, VLMs, post-training, tool-augmented agents, distributed learning, and differential privacy, with a focus on systems that can reason over complex data while operating safely in data-sensitive settings.",
+    "My research connects LLMs, VLMs, post-training, tool-augmented agentic systems, AI for software engineering, distributed learning, and differential privacy.",
   ],
   links: [
     {
@@ -78,7 +78,7 @@ export const profile = {
     },
     {
       label: "Email",
-      href: "mailto:nk569@njit.edu",
+      href: "mailto:nkhoa2410@gmail.com",
       icon: "mail",
     },
     {
@@ -99,7 +99,7 @@ export const profile = {
     },
     {
       date: "Nov 2025",
-      text: "Started a research collaboration with AT&T on machine-learning approaches for cellular network maintenance scheduling.",
+      text: "Started a research collaboration with AT&T on graph foundation models for LTE/5G site-maintenance prediction.",
     },
     {
       date: "2025",
@@ -115,48 +115,48 @@ export const profile = {
       title: "NOIR: Privacy-Preserving Generation with LLMs",
       focus: "LLM privacy",
       summary:
-        "A privacy-preserving agentic LLM system for protecting sensitive user information while preserving strong model utility in interactive and tool-augmented settings.",
+        "A distributed privacy-preserving LLM system that protects prompts and responses while supporting large-scale code generation and agentic workflows.",
       approach:
-        "Developed NOIR, a split-learning LLM framework with local differential privacy, analyzed reconstruction risk through theoretical recovery bounds, and extended the mechanism toward multimodal, tool-use, and agentic systems.",
+        "Developed NOIR with differential privacy, built a code-data refinement pipeline for SFT, and engineered multi-GPU, multi-node training with LLaMA-Factory, DeepSpeed, Accelerate, and Slurm.",
       impact:
-        "Accepted to USENIX Security 2026 and connected to an international patent application on private code generation.",
-      stack: ["PyTorch", "Transformers", "Differential privacy", "Split learning"],
+        "Prevented prompt and response reconstruction attacks and achieved a 4x distributed training speedup.",
+      stack: ["PyTorch", "Transformers", "Differential privacy", "DeepSpeed", "Accelerate", "Slurm"],
       links: [],
     },
     {
-      title: "Program Structure-Aware LLM for Targeted Software Testing",
+      title: "GLMTest: Program Structure-Aware LLM for Targeted Software Testing",
       focus: "Software agents",
       summary:
-        "A program-aware agentic framework for targeted test-case generation aligned with specific software behaviors.",
+        "A graph-augmented LLM framework that generates test cases toward targeted execution branches.",
       approach:
-        "Conditioned language-model agents on program representations so generated tests target behavior beyond textual semantics.",
+        "Used Code Property Graphs, semantic program analysis, developer-written tests, and branch traces to align generated tests with program structure.",
       impact:
-        "Accepted to Findings of ACL 2026, with higher precision and effectiveness than strong baseline methods.",
-      stack: ["LLM agents", "Program analysis", "Fuzzing", "Software security"],
+        "Reached 71.9% higher targeted-branch accuracy, 29% higher branch overlap, 2x higher executable-test generation, and 3x more branch-annotated data.",
+      stack: ["LLM agents", "Code Property Graphs", "Program analysis", "Software testing"],
       links: [],
     },
     {
       title: "FedChip: Federated LLM for AI Accelerator Chip Design",
       focus: "Federated LLMs",
       summary:
-        "A federated framework for collaborative LLM-based hardware design without centralizing sensitive design data.",
+        "A federated PEFT framework for adapting language models to Verilog-based AI accelerator design under PPA constraints.",
       approach:
-        "Built a multi-objective evaluation pipeline for accelerator design quality across distributed participants.",
+        "Leveraged LoRA, curated APTPU-Gen with 30k design configurations, and introduced Chip@k for multi-objective code quality evaluation.",
       impact:
-        "Published at IEEE ICLAD 2025, demonstrating practical gains over prior LLM-aided hardware design methods.",
-      stack: ["Federated learning", "LLMs", "Hardware design", "Evaluation"],
+        "Boosted optimal hardware generation by 77% over frontier LLM baselines without leaking proprietary intellectual property.",
+      stack: ["Federated learning", "LoRA", "Verilog", "Hardware design"],
       links: [],
     },
     {
       title: "Geographic-Aware Federated Learning",
       focus: "Distributed learning",
       summary:
-        "A federated learning approach that models structured relationships among decentralized participants under realistic heterogeneity.",
+        "A stochastic federated learning algorithm for sharing signal across geographically related mobile-sensing zones.",
       approach:
-        "Developed stochastic geographic gradient fusion to incorporate real-world relational structure across clients.",
+        "Modeled zone correlations with hierarchical random graphs and MCMC sampling, then fused gradients through attention-weighted sharing.",
       impact:
-        "Published at IEEE BigData 2025 and validated on large-scale distributed datasets.",
-      stack: ["Federated learning", "Optimization", "Distributed data", "Python"],
+        "Improved mobile-sensing utility by 3.23% across 2x more zones without slowing convergence.",
+      stack: ["Federated learning", "MCMC", "Optimization", "Mobile sensing"],
       links: [],
     },
   ] satisfies Project[],
@@ -174,16 +174,16 @@ export const profile = {
       tags: ["USENIX Security 2026", "LLM privacy", "Code generation"],
     },
     {
-      title: "SGFusion: Stochastic Geographic Gradient Fusion in Federated Learning",
-      description:
-        "Khoa Nguyen, Khang Tran, NhatHai Phan, Cristian Borcea, Ruoming Jin, Issa Khalil.",
-      tags: ["IEEE BigData 2025", "Federated learning", "Distributed optimization"],
-    },
-    {
       title: "FedChip: Federated LLM for AI Accelerator Chip Design",
       description:
         "Mahmoud Nazzal, Khoa Nguyen, Deepak Vungarala, Ramtin Zand, Shaahin Angizi, Hai Phan, Abdallah Khreishah.",
       tags: ["IEEE ICLAD 2025", "Federated LLMs", "Chip design"],
+    },
+    {
+      title: "SGFusion: Stochastic Geographic Gradient Fusion in Federated Learning",
+      description:
+        "Khoa Nguyen, Khang Tran, NhatHai Phan, Cristian Borcea, Ruoming Jin, Issa Khalil.",
+      tags: ["IEEE BigData 2025", "Federated learning", "Distributed optimization"],
     },
     {
       title: "System and Method for Private Generation of Code",
@@ -198,33 +198,44 @@ export const profile = {
       title: "Research Scientist",
       organization: "OppyAI Inc. - Newark, NJ",
       detail:
-        "Translated core privacy-preserving LLM research into a commercial startup and built distributed ML pipelines spanning data preprocessing, pre-training, SFT/RL post-training, inference, and evaluation on multi-node, multi-GPU infrastructure.",
+        "Extended a privacy-preserving split-LLM framework into a production enterprise solution spanning general chat, multilingual NLU, VLMs, tool-augmented agentic systems, MoE architectures, GRPO post-training, and adversarial robustness.",
     },
     {
       label: "Nov 2025 - Present",
       title: "Research Collaborator",
       organization: "AT&T - Bedminster, NJ",
       detail:
-        "Designed a graph foundation model for cellular site maintenance scheduling, using large-scale historical LTE and 5G network data to improve operational efficiency and user experience.",
+        "Designed a graph foundation model for LTE/5G site-maintenance prediction using large-scale historical network data to optimize scheduling efficiency and user experience.",
+    },
+    {
+      label: "Sep 2023 - Present",
+      title: "Research Assistant",
+      organization: "New Jersey Institute of Technology",
+      detail:
+        "Developed NOIR, GLMTest, FedChip, and SGFusion across privacy-preserving LLMs, code intelligence, federated PEFT, and geographic federated learning.",
     },
     {
       label: "Sep 2023 - Present",
       title: "Ph.D. in Data Science",
       organization: "New Jersey Institute of Technology",
       detail:
-        "Advised by Dr. NhatHai Phan, with research on LLMs, VLMs, SFT/RL post-training, tool-augmented agents, security, privacy, and fuzzing.",
-    },
-    {
-      label: "Sep 2019 - May 2023",
-      title: "B.S. in Computer Science",
-      organization: "New Jersey Institute of Technology",
-      detail: "Undergraduate training in computer science, programming systems, and data science foundations.",
+        "Advised by Dr. NhatHai Phan, with focus on LLMs, VLMs, SFT/RL post-training, tool-augmented agentic systems, AI for software engineering, security, and privacy.",
     },
   ] satisfies TimelineItem[],
   skillGroups: [
     {
       title: "Machine Learning",
-      skills: ["LLMs", "VLMs", "NLP", "RL", "Distributed training", "GNNs", "Federated learning", "Distillation"],
+      skills: [
+        "LLMs",
+        "VLMs",
+        "Diffusion models",
+        "NLP",
+        "RL",
+        "Distributed training",
+        "GNNs",
+        "Federated learning",
+        "Distillation",
+      ],
     },
     {
       title: "Frameworks",
@@ -242,7 +253,8 @@ export const profile = {
   achievements: [
     {
       title: "Teaching Assistant at NJIT",
-      detail: "Supported DS110, CS280, DS677, and DS636 across AI foundations, programming languages, deep learning, and analytics.",
+      detail:
+        "Supported Basic Foundations of AI, Deep Learning, and Programming Language Concepts across Fall 2024, Spring 2025, and Fall 2025 offerings.",
     },
     {
       title: "Winner - GfK NextGen Data Science Hackathon 2022",
@@ -252,12 +264,8 @@ export const profile = {
       title: "ICPC Greater NY Regional Qualifier 2022",
       detail: "Qualified for the regional contest through competitive programming performance.",
     },
-    {
-      title: "3rd Prize - Vietnam Science and Engineering Fair 2017",
-      detail: "Recognized for early research and engineering work.",
-    },
   ] satisfies Achievement[],
-  contactHeading: "Open to research engineering, LLM systems, and privacy-preserving AI roles.",
+  contactHeading: "Open to research engineering, LLM/VLM systems, and privacy-preserving AI roles.",
   contactText:
-    "I am especially interested in teams building reliable agentic systems, secure ML infrastructure, and privacy-preserving AI that can move from research prototypes into deployed products.",
+    "I am especially interested in teams building reliable agentic systems, secure ML infrastructure, post-training pipelines, and privacy-preserving AI that can move from research prototypes into deployed products.",
 };
