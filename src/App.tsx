@@ -21,6 +21,7 @@ const iconForLink = {
   mail: Mail,
   phone: Phone,
   resume: Download,
+  scholar: BookOpen,
   external: ExternalLink,
 };
 
@@ -72,6 +73,7 @@ function App() {
           <a href="#about">About</a>
           <a href="#news">News</a>
           <a href="#publications">Publications</a>
+          <a href="#patents">Patents</a>
           <a href="#projects">Projects</a>
           <a href="#contact">Contact</a>
           {resumeLink ? <a href={resumeLink.href}>CV</a> : null}
@@ -128,6 +130,25 @@ function App() {
               {profile.research.map((item) => (
                 <article className="publication-item" key={item.title}>
                   <BookOpen aria-hidden="true" size={19} />
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <div className="tag-row">
+                      {item.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </Section>
+
+          <Section id="patents" title="Patents">
+            <div className="publication-list">
+              {profile.patents.map((item) => (
+                <article className="publication-item" key={item.title}>
+                  <FileText aria-hidden="true" size={19} />
                   <div>
                     <h3>{item.title}</h3>
                     <p>{item.description}</p>
@@ -220,6 +241,12 @@ function App() {
                 <Linkedin aria-hidden="true" size={18} />
                 <a href={profile.linkedinUrl} target="_blank" rel="noreferrer">
                   LinkedIn
+                </a>
+              </li>
+              <li>
+                <BookOpen aria-hidden="true" size={18} />
+                <a href={profile.googleScholarUrl} target="_blank" rel="noreferrer">
+                  Google Scholar
                 </a>
               </li>
             </ul>

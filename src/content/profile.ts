@@ -1,7 +1,7 @@
 export type ProfileLink = {
   label: string;
   href: string;
-  icon: "github" | "linkedin" | "mail" | "phone" | "resume" | "external";
+  icon: "github" | "linkedin" | "mail" | "phone" | "resume" | "scholar" | "external";
   external?: boolean;
 };
 
@@ -54,6 +54,7 @@ export const profile = {
   phone: "(973) 978-6177",
   githubUrl: "https://github.com/knguyen2410",
   linkedinUrl: "https://www.linkedin.com/in/khoanguyen2410",
+  googleScholarUrl: "https://scholar.google.com/citations?user=72LVnSEAAAAJ&hl=en",
   resumePath: assetPath("resume.pdf"),
   profileImage: assetPath("profile.jpeg"),
   heroImage: assetPath("research-workspace.png"),
@@ -74,6 +75,12 @@ export const profile = {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/khoanguyen2410",
       icon: "linkedin",
+      external: true,
+    },
+    {
+      label: "Google Scholar",
+      href: "https://scholar.google.com/citations?user=72LVnSEAAAAJ&hl=en",
+      icon: "scholar",
       external: true,
     },
     {
@@ -185,11 +192,13 @@ export const profile = {
         "Khoa Nguyen, Khang Tran, NhatHai Phan, Cristian Borcea, Ruoming Jin, Issa Khalil.",
       tags: ["IEEE BigData 2025", "Federated learning", "Distributed optimization"],
     },
+  ] satisfies ResearchItem[],
+  patents: [
     {
       title: "System and Method for Private Generation of Code",
       description:
         "International patent application with NhatHai Phan, Khiem Ton, Issa Khalil, My Thai, and Ruoming Jin.",
-      tags: ["Patent", "PCT/US25/042391", "Private code generation"],
+      tags: ["PCT/US25/042391", "Private code generation"],
     },
   ] satisfies ResearchItem[],
   timeline: [
