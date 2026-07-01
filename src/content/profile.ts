@@ -29,23 +29,6 @@ export type TimelineItem = {
   detail: string;
 };
 
-export type ExperienceItem = {
-  organization: string;
-  title: string;
-  date: string;
-  bullets: {
-    label?: string;
-    text: string;
-  }[];
-};
-
-export type EducationItem = {
-  institution: string;
-  date: string;
-  degree: string;
-  focus: string;
-};
-
 export type SkillGroup = {
   title: string;
   skills: string[];
@@ -58,11 +41,6 @@ export type Achievement = {
 
 export type NewsItem = {
   date: string;
-  text: string;
-};
-
-export type PublicationEntry = {
-  label: string;
   text: string;
 };
 
@@ -110,15 +88,6 @@ export const profile = {
     },
   ] satisfies ProfileLink[],
   signals: ["Privacy-preserving LLMs", "VLMs and post-training", "Agentic systems", "Software security"],
-  education: [
-    {
-      institution: "New Jersey Institute of Technology",
-      date: "September 2023 - Present",
-      degree: "Ph.D. in Data Science",
-      focus:
-        "LLMs, VLMs, Post-Training (SFT & RL), Tool-Augmented Agentic Systems, AI for Software Engineering, Security, Privacy.",
-    },
-  ] satisfies EducationItem[],
   news: [
     {
       date: "2026",
@@ -223,101 +192,6 @@ export const profile = {
       tags: ["Patent", "PCT/US25/042391", "Private code generation"],
     },
   ] satisfies ResearchItem[],
-  experience: [
-    {
-      organization: "AT&T",
-      title: "Research Collaborator",
-      date: "November 2025 - Present",
-      bullets: [
-        {
-          label: "Cellular Network Maintenance Scheduling",
-          text:
-            "Designed a graph foundation model for LTE/5G site-maintenance prediction using large-scale historical network data, optimizing scheduling efficiency and user experience.",
-        },
-      ],
-    },
-    {
-      organization: "OppyAI Inc.",
-      title: "Research Scientist",
-      date: "November 2024 - Present",
-      bullets: [
-        {
-          label: "Multi-Modal & Agentic Systems",
-          text:
-            "Extended a privacy-preserving split-LLM framework into a production enterprise solution, scaling capabilities from code generation to general chat, multilingual natural language understanding, VLMs, Tool-Augmented Agentic Systems, and MoE architectures.",
-        },
-        {
-          label: "RL for Reasoning Performance Optimization",
-          text:
-            "Integrated a distributed GRPO training loop into the post-training pipeline, significantly boosting the mathematical, logical, and structural reasoning capacities.",
-        },
-        {
-          label: "Adversarial Security & Robustness",
-          text:
-            "Conducted vulnerability assessments to design advanced attacks and built an adversarial training pipeline to defend models against privacy exploits.",
-        },
-      ],
-    },
-    {
-      organization: "New Jersey Institute of Technology",
-      title: "Research Assistant",
-      date: "September 2023 - Present",
-      bullets: [
-        {
-          label: "Privacy-Preserving LLM System",
-          text:
-            "Developed NOIR, a distributed LLM system using differential privacy to prevent 100% prompt and response reconstruction attacks. Built an end-to-end data pipeline to clean, refine, and transform raw pre-train code data into high-quality data optimized for large-scale SFT. Engineered a multi-GPU and multi-node distributed training pipeline using LLaMA-Factory, DeepSpeed, Accelerate, on an HPC Slurm cluster, achieving 4x speedup.",
-        },
-        {
-          label: "Structure-Aware Code Intelligence",
-          text:
-            "Developed GLMTest, a graph-augmented LLM framework that leverages Code Property Graphs and semantic program analysis to improve LLM capabilities on generating test-cases toward targeted execution branches, achieving 71.9% higher targeted-branch accuracy, 29% higher branch overlap, and 2x higher executable-test generation performance than frontier LLM baselines. Curated 3x more branch-annotated dataset from real-world repositories by executing developer-written tests and aligning branch traces with program structure.",
-        },
-        {
-          label: "Federated LLMs for Chip Design",
-          text:
-            "Developed FedChip, a federated PEFT framework leveraging LoRA to collaboratively adapt language models for Verilog-based AI accelerator design under PPA constraints. Curated APTPU-Gen with 30k design configurations and introduced Chip@k, a statistical evaluation metric for multi-objective code quality, boosting optimal hardware generation by 77% over frontier LLM baselines without leaking proprietary intellectual property.",
-        },
-        {
-          label: "Geographic FL",
-          text:
-            "Developed SGFusion, a stochastic FL algorithm that models correlations among geographic zones using hierarchical random graphs and MCMC sampling, enabling similar zones to share gradients through attention-weighted fusion; boosted mobile-sensing utility by 3.23% across 2x more zones without slowing convergence.",
-        },
-      ],
-    },
-  ] satisfies ExperienceItem[],
-  papers: [
-    {
-      label: "[1]",
-      text:
-        "K. Tran, Khoa Nguyen, C. Borcea, et al., \"Program Structure-aware Language Models: Targeted Software Testing beyond Textual Semantics,\" Findings of the Association for Computational Linguistics: ACL'26, 2026.",
-    },
-    {
-      label: "[2]",
-      text:
-        "Khoa Nguyen, K. Ton, N. Phan, et al., \"NOIR: Privacy-Preserving Generation of Code with Open-Source LLMs,\" Proceedings of the 35th USENIX Security Symposium, USENIX Security '26, 2026.",
-    },
-    {
-      label: "[3]",
-      text:
-        "M. Nazzal, Khoa Nguyen, D. Vungarala, et al., \"FedChip: Federated LLM for Artificial Intelligence Accelerator Chip Design,\" 2025 IEEE International Conference on LLM-Aided Design (ICLAD'25), IEEE, 2025.",
-    },
-    {
-      label: "[4]",
-      text:
-        "Khoa Nguyen, K. Tran, N. Phan, et al., \"SGFusion: Stochastic Geographic Gradient Fusion in Federated Learning,\" 2025 IEEE International Conference on Big Data (BigData'25), 2025.",
-    },
-  ] satisfies PublicationEntry[],
-  patents: [
-    {
-      label: "[1]",
-      text:
-        "N. Phan, Khoa Nguyen, K. Ton, et al., System and Method for Private Generation of Code, International Patent Application, No. PCT/US25/042391, 2025.",
-    },
-  ] satisfies PublicationEntry[],
-  teaching: [
-    "Teaching Assistant: Basic Foundations of AI (FA25), Deep Learning (FA24, SP25), Programming Language Concepts (SP24).",
-  ],
   timeline: [
     {
       label: "Nov 2024 - Present",
@@ -368,22 +242,27 @@ export const profile = {
       skills: ["PyTorch", "Transformers", "LLaMA-Factory", "verl", "vLLM", "Ray", "Triton", "DeepSpeed", "Accelerate"],
     },
     {
-      title: "Infrastructures & Tools",
+      title: "Infrastructure",
       skills: ["CUDA", "Linux", "Slurm", "Git", "Docker", "SQL", "Multi-GPU training"],
     },
     {
-      title: "Programming Languages",
+      title: "Languages",
       skills: ["Python", "Java", "JavaScript", "C/C++"],
     },
   ] satisfies SkillGroup[],
   achievements: [
     {
+      title: "Teaching Assistant at NJIT",
+      detail:
+        "Supported Basic Foundations of AI, Deep Learning, and Programming Language Concepts across Fall 2024, Spring 2025, and Fall 2025 offerings.",
+    },
+    {
       title: "Winner - GfK NextGen Data Science Hackathon 2022",
-      detail: "",
+      detail: "Awarded first place in a data science competition focused on applied analytics.",
     },
     {
       title: "ICPC Greater NY Regional Qualifier 2022",
-      detail: "",
+      detail: "Qualified for the regional contest through competitive programming performance.",
     },
   ] satisfies Achievement[],
   contactHeading: "Open to research engineering, LLM/VLM systems, and privacy-preserving AI roles.",
